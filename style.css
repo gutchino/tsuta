@@ -1,0 +1,360 @@
+/*
+Theme Name: foundation4blogtheme
+Theme URI: https://github.com/gatespace/foundation4blogtheme
+Author: gatespace(Kazue Igarashi)
+Author URI: http://gatespace.jp/
+Description: Starter theme, including the Foundation 4.
+Version: 20130515
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: foundation4blogtheme
+Domain Path: /languages/
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Foundation is made by ZURB, a product design company in Campbell, California.
+We've put more than 15 years of experience building web products, services and websites into this framework.
+http://foundation.zurb.com/
+
+Foundation 4 Documentation
+http://foundation.zurb.com/docs/
+
+ie8-grid-foundation-4.css
+https://gist.github.com/zurbchris/5068210
+
+*/
+/* mixin */
+/* =Global
+----------------------------------------------- */
+html {
+  background-color: transparent;
+}
+
+body {
+  position: inherit;
+}
+
+.entry-content ul, .comment-content ul, .widget-area ul {
+  margin-left: 1.5em;
+}
+.entry-content ol, .comment-content ol, .widget-area ol {
+  margin-left: 2em;
+}
+
+.label a {
+  color: white;
+}
+
+/* Alignment */
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+.screen-reader-text:hover, .screen-reader-text:active, .screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar */
+}
+
+/* =Layout
+----------------------------------------------- */
+.site {
+  margin: 2em auto;
+  padding: 1em 1.5em;
+  max-width: 1000px;
+  background-color: white;
+}
+
+.site-main {
+  clear: both;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.site-footer {
+  clear: both;
+  padding: 1.5em 0;
+  border-top: solid 1px #cccccc;
+}
+
+/* =masthead
+----------------------------------------------- */
+.site-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.site-description {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* =Menu
+----------------------------------------------- */
+/* =Content
+----------------------------------------------- */
+.sticky {
+  border: solid 1px #cccccc;
+  padding: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.hentry {
+  margin: 0 0 1em;
+  padding-bottom: 1.5em;
+  border-bottom: solid 1px #cccccc;
+}
+
+.byline {
+  display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+  display: inline;
+}
+
+.entry-content,
+.entry-summary {
+  margin: 1em 0 0;
+  *zoom: 1;
+}
+.entry-content:after,
+.entry-summary:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+.entry-footer {
+  clear: both;
+  border: solid 1px #cccccc;
+  padding: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+}
+
+/* =Asides
+----------------------------------------------- */
+.blog .format-aside .entry-title,
+.archive .format-aside .entry-title {
+  display: none;
+}
+
+/* =Media
+----------------------------------------------- */
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+.wp-caption {
+  margin-bottom: 1em;
+  max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin: 5px auto;
+  max-width: 98%;
+}
+
+.wp-caption-text {
+  font-size: 0.9em;
+  color: #a2a2a2;
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+.site-content .gallery {
+  margin-bottom: 1.5em;
+}
+
+.gallery-caption {
+  color: #a2a2a2;
+}
+
+.gallery-item {
+  text-align: center;
+}
+
+.gallery-item a img {
+  max-width: 90%;
+  height: auto;
+}
+
+.gallery-box li {
+  margin-right: 0;
+}
+
+/* =Navigation
+----------------------------------------------- */
+.site-content [class*="navigation"] {
+  margin: 0 0 1.5em;
+  *zoom: 1;
+}
+.site-content [class*="navigation"]:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[class*="navigation"] .nav-previous {
+  float: left;
+  width: 50%;
+}
+
+[class*="navigation"] .nav-next {
+  float: right;
+  text-align: right;
+  width: 50%;
+}
+
+/* =Comments
+----------------------------------------------- */
+.comments-title {
+  font-size: 1.4em;
+}
+
+.comment-list {
+  font-size: 0.8em;
+  list-style-type: none;
+  margin-left: 0 !important;
+}
+.comment-list .pingback > p {
+  margin-bottom: 0;
+}
+.comment-list .children {
+  list-style-type: none;
+  margin-top: 1em;
+  margin-left: 180px;
+}
+.comment-list .children .children {
+  margin-left: 3em;
+}
+.comment-list .depth-1 {
+  padding: 1em 0;
+  border-bottom: solid 1px #cccccc;
+}
+.comment-list > .thread-odd {
+  background-color: #eeeeee;
+}
+.comment-list .vcard {
+  display: block;
+  background-color: #FFFFFF;
+}
+.comment-list .vcard img {
+  margin-right: 5px;
+}
+
+@media only screen and (orientation: portrait) {
+  .comment-list .children {
+    margin-left: 2em;
+  }
+}
+.comment-content a {
+  word-wrap: break-word;
+}
+
+.bypostauthor > .comment-article .vcard {
+  background-color: #ffffcc;
+}
+
+/* =Comments form
+----------------------------------------------- */
+#reply-title {
+  font-size: 1.4em;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+
+/* =Widgets
+----------------------------------------------- */
+.widget {
+  margin: 0 0 1.5em;
+}
+
+/* Make sure select elements fit in widgets */
+.widget select {
+  max-width: 100%;
+}
+
+.widget-title,
+.widgettitle {
+  font-size: 1.4em;
+}
+
+/* Search widget */
+.widget_search .submit {
+  display: none;
+}
+
+/* =Infinite Scroll
+----------------------------------------------- */
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .navigation-paging,
+.infinite-scroll.neverending .site-footer {
+  /* Theme Footer (when set to scrolling) */
+  display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
+.infinity-end.neverending .site-footer {
+  display: block;
+}
