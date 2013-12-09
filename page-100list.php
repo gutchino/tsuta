@@ -1,12 +1,6 @@
 <?php
-/**
- * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+/*
+ * Template Name: gallery
  *
  * @package gutchino
  * @subpackage gutchino_theme_01
@@ -20,23 +14,16 @@ get_header(); ?>
 					<article id="post-<? the_ID(); ?>"class="post">
 					<div class="post">
 						<h2 class="title">
-							<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
 				                        <?php the_title(); ?>
-							</a>
 						</h2>
 						<div class="blog_info">
-							<ul>
-								<li class="cal">Date : <?php the_time('Y/m/d H:i'); ?></li>
-								<li class="cat">Category : <?php the_category(', ') ?></li>
-								<li class="tag">Tag : <?php the_tags('', ', '); ?></li>
-							</ul>
-							<br class="clear" />
+							<p>最終更新日 : <?php the_time('Y/m/d'); ?></p>
 						</div>
-						
+
 						<div class="thumbnail">
 							<?php the_post_thumbnail('thumbnail'); ?>
 						</div>
-						
+
 						<?php the_content('続きを読む'); ?>
 
 							<br class="clear" />
@@ -47,7 +34,6 @@ get_header(); ?>
 				<?php endwhile; ?>
 
 			<?php endif; ?>
-
 				</div><!-- /#main -->
 
 <?php get_sidebar(); ?>

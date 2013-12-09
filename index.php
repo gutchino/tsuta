@@ -8,48 +8,44 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package foundation4blogtheme
+ * @package gutchino
+ * @subpackage gutchino_theme_01
  */
-
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+			<?php if ( have_posts() ): ?>
+				<?php /* Start the Loop */ ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php if ( have_posts() ) : ?>
-
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to overload this in a child theme then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
-				?>
-
-			<?php endwhile; ?>
-
-			<?php if ( $wp_query->max_num_pages > 1 ) : ?>
-				<?php // Pagination by WP SiteManager. http://www.wp-sitemanager.com/usage/pagenavi/ ?>
-				<?php if ( class_exists( 'WP_SiteManager_page_navi' ) ) : ?>
-					<div class="pagination-centered">
-						<?php WP_SiteManager_page_navi::page_navi('elm_class=pagination&current_format=<a href="#">%d</a>'); ?>
-					</div>
-				<?php else : ?>
-					<?php foundation4blogtheme_content_nav( 'nav-below' ); ?>
-				<?php endif; ?>
+					<article id="post-<? the_ID(); ?>"class="post">
+					<div class="post">
+						<h2 class="title">
+							<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+								<?php the_title(); ?>
+							</a>
+						</h2>
+						<div class="blog_info">
+							<ul>
+								<li class="cal">Date : <?php the_time('Y/m/d H:i'); ?></li>
+								<li class="cat">Category : <?php the_category(', ') ?></li>
+								<li class="tag">Tag : <?php the_tags('', ', '); ?></li>
+							</ul>
+							<br class="clear" />
+						</div>
+						<div class="thumbnail">
+							<?php the_post_thumbnail('thumbnail'); ?>
+						</div>
+						<?php the_content('続きを読む'); ?>
+						<br class="clear" />
+					</div><!-- /.post -->
+					</article><!-- /.post -->
+				<?php endwhile; ?>
 			<?php endif; ?>
-
-		<?php else : ?>
-
-			<?php get_template_part( 'no-results', 'index' ); ?>
-
-		<?php endif; ?>
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
+			<?php if (function_exists("pagination")) {
+				pagination();
+			} ?>
+			<?php wp_reset_query(); ?>
+				</div><!-- /#main -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

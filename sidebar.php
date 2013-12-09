@@ -1,33 +1,30 @@
 <?php
 /**
- * The Sidebar containing the main widget areas.
- *
- * @package foundation4blogtheme
+ * The Sidebar containing the main widget area.
  */
 ?>
-	<div id="secondary" class="widget-area" role="complementary">
-		<?php do_action( 'before_sidebar' ); ?>
-		<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
 
-			<aside id="search" class="widget widget_search">
-				<?php get_search_form(); ?>
-			</aside>
-
-			<aside id="archives" class="widget">
-				<h1 class="widget-title"><?php _e( 'Archives', 'foundation4blogtheme' ); ?></h1>
-				<ul>
-					<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
-				</ul>
-			</aside>
-
-			<aside id="meta" class="widget">
-				<h1 class="widget-title"><?php _e( 'Meta', 'foundation4blogtheme' ); ?></h1>
-				<ul>
-					<?php wp_register(); ?>
-					<li><?php wp_loginout(); ?></li>
-					<?php wp_meta(); ?>
-				</ul>
-			</aside>
-
-		<?php endif; // end sidebar widget area ?>
-	</div><!-- #secondary -->
+<div id="side">
+<?php
+	dynamic_sidebar('Side Widget');
+/*if ( ! dynamic_sidebar('side-widget') ): ;?>
+	<div class="widget-area">
+		<ul id="sidebar">
+			<li class="widget-container">
+				<h3>カテゴリ</h3>
+				<?php wp_list_categories( 'title_li=&show_count=1' ); ?> 
+			</li><!-- /.widget-container -->
+			<li class="widget-container">
+				<h3>タグ</h3>
+				<?php wp_tag_cloud(); ?>
+			</li><!-- /.widget-container -->
+			<li class="widget-container">
+				<h3>アーカイブ</h3>
+				<div id="calendar_wrap">
+				<?php get_calendar(); ?>
+				</div>
+			</li><!-- /.widget-container -->
+		</ul>
+	</div><!-- /.widget-area -->
+<?php endif; */ ?>
+</div><!-- /#side -->

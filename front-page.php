@@ -9,7 +9,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package gutchino
- * @subpackage gutchino_theme_01
+ * @subpackage gutchino
  */
 get_header(); ?>
 
@@ -40,14 +40,14 @@ get_header(); ?>
 						<?php the_content('続きを読む'); ?>
 
 							<br class="clear" />
-
 					</div><!-- /.post -->
 					</article><!-- /.post -->
-
 				<?php endwhile; ?>
-
 			<?php endif; ?>
-
+			<?php if (function_exists("pagination")) {
+				pagination();
+			} ?>
+			<?php wp_reset_query(); ?>
 				</div><!-- /#main -->
 
 <?php get_sidebar(); ?>

@@ -4,61 +4,113 @@
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package foundation4blogtheme
+ * @package gutchino
+ * @subpackage gutchino_theme_01
+ * @since gutchino_theme_01
  */
-?><!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" <?php language_attributes(); ?>><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
+?>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-<meta name="viewport" content="width=device-width">
-<title>いじわるぅ…<?php wp_title( '|', true, 'right' ); ?></title>
-<title><?php wp_title( '|', true, 'right' ); ?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="description" content="【gutchinoの〇〇な話】2013年2月に開設したブログです。内容は雑多ですが、根底に流れるテーマは一つ：「美しいこと／ものを通じて、人々の日常に潤いを与える(・ω・)ノ」">
+	<meta name="keywords" content="gutchino, グッチーノ, ぐっちーの, gutchino ブログ, 山口 真義, やまぐち まさよし">
+
+	<title><?php
+	/*
+	 * Print the <title> tag based on what is being viewed.
+	 */
+	global $page, $paged;
+
+	wp_title( '|', true, 'right' );
+
+	// Add the blog name.
+	bloginfo( 'name' );
+
+	// Add the blog description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		echo " | $site_description";
+
+	// Add a page number if necessary:
+	if ( $paged >= 2 || $page >= 2 )
+		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
+
+	?></title>
+
+<!-- External files -->
+	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+
+<!-- Favicon, Thumbnail image -->
+	<link rel="shortcut icon" href="<?php bloginfo( 'template_url' ); ?>/images/favicon.png">
+
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
 <!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/javascripts/html5.js" type="text/javascript"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
+
+<!-- ///// Jquery ///// -->
+	<script type="text/javascript" src="<?php bloginfo( 'template_url' ); ?>/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="<?php bloginfo( 'template_url' ); ?>/jquery-contained-sticky-scroll.js"></script>
+
+<!-- ///// Script Here ///// -->
+</script>
+<!--
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#side').containedStickyScroll();
+	    });
+	</script>
+-->
+
+<!-- ///// Analytics ///// -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36684753-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- Value Commerce -->
+<valuecommerce   ptnOid="3074663" url="http://gutchino.com" />
 
 <?php wp_head(); ?>
 </head>
 
+
 <body <?php body_class(); ?>>
 
-<div id="page" class="hfeed site">
-	<?php do_action( 'before' ); ?>
-	<header id="masthead" class="site-header row" role="banner">
-		<div class="site-branding columns small-12">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</div>
-	</header><!-- #masthead -->
+	<div id="page">
+		<div id="wrapper">
 
-	<div id="site-navigation" class="site-navigation row">
-		<div class="screen-reader-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'foundation4blogtheme' ); ?>"><?php _e( 'Skip to content', 'foundation4blogtheme' ); ?></a></div>
-		<nav class="navigation-main top-bar" role="navigation">
-			<ul class="title-area">
-				<li class="name">
-					<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php _e( 'Home', 'foundation4blogtheme' ); ?> </a></h1>
-				</li>
-				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-				<li class="toggle-topbar menu-icon"><a href="#"><span><?php _e( 'MENU', 'foundation4blogtheme' ); ?></span></a></li>
-			</ul>
-
-			<section class="top-bar-section">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => '', 'menu_class' => 'left', 'fallback_cb' => 'foundation4blogtheme_page_menu', 'walker' => new foundation4blogtheme_walker_nav_menu ) ); ?>
-			</section>
-		</nav><!-- #site-navigation -->
-	</div>
-
-	<div id="main" class="site-main">
-
-		<?php // Bread crumb navigation by WP SiteManager. http://www.wp-sitemanager.com/usage/breadcrumb/ ?>
-		<?php if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) : ?>
-			<?php if ( ! is_front_page() ) : ?>
-				<div id="site-breadcrumb" class="site-breadcrumb columns small-12">
-					<?php WP_SiteManager_bread_crumb::bread_crumb('elm_class=breadcrumbs'); ?>
+<!-- Header -->		
+			<header>
+				<div id="headerimg">
+				<img src="<?php bloginfo( 'template_url' ); ?>/images/headerimg_20130201_7.png" />
 				</div>
-			<?php endif; ?>
-		<?php endif; ?>
+
+				<nav>
+					<div class="gmenu">
+					<?php wp_nav_menu(); ?> 
+					</div>
+					<div class="searchform">
+							<form action="#" id="searchform" method="get">
+									<input type="text" id="s" name="s" value="" size="25">
+									<input type="submit" value="検索" id="searchsubmit">
+							</form>
+					</div>
+				</nav>
+
+			</header>
+<!-- Contents -->
+			<div id="contents">
+				<div id="main">
